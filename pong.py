@@ -3,13 +3,14 @@ import pygame
 ##############################################################
 # Configuraciones
 ##############################################################
-ANCHO = 400
 ALTO = 600
+ANCHO = 800
 
-ALTO_PALA = 70
+ALTO_PALA = 100
 ANCHO_PALA = 10
-MARGEN = 10
+MARGEN = 30
 
+TAM_PELOTA = 8
 
 COLOR_FONDO = (0, 0, 0)
 COLOR_OBJETOS = (200, 200, 200)
@@ -54,6 +55,11 @@ class Pong:
             jugador2 = pygame.Rect(x2, y, ANCHO_PALA, ALTO_PALA)
             pygame.draw.rect(self.pantalla, COLOR_OBJETOS, jugador2)
             
+            # pinto la pelota
+            xp = (ANCHO - TAM_PELOTA) / 2
+            yp = (ALTO - TAM_PELOTA) / 2
+            pelota = pygame.Rect(xp, yp, TAM_PELOTA, TAM_PELOTA)
+            pygame.draw.rect(self.pantalla, COLOR_OBJETOS, pelota)
 
             # 3. mostrar los cambios en la pantalla
             pygame.display.flip()
