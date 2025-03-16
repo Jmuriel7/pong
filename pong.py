@@ -1,9 +1,20 @@
 import pygame
 
+##############################################################
 # Configuraciones
-ANCHO = 640
-ALTO = 480
-COLOR_FONDO = (0, 50, 0)
+##############################################################
+ANCHO = 400
+ALTO = 600
+
+ALTO_PALA = 70
+ANCHO_PALA = 10
+MARGEN = 10
+
+
+COLOR_FONDO = (0, 0, 0)
+COLOR_OBJETOS = (200, 200, 200)
+
+###############################################################
 
 class Pong:
 
@@ -23,27 +34,36 @@ class Pong:
                     print("Has pulsado el botón de cerrar la ventana")
                     salir = True
     
-        # renderizar mis objetos (pintar en pantalla)
-        # 1. borrar pantalla
-        pygame.draw.rect(
-            self.pantalla,
-            COLOR_FONDO,
-            ((0,0), (ANCHO, ALTO)))
+            # renderizar mis objetos (pintar en pantalla)
+            # 1. borrar pantalla
+            pygame.draw.rect(
+                self.pantalla,
+                COLOR_FONDO,
+                ((0,0), (ANCHO, ALTO)))
 
-        # 2. Pintar los objetos en la posición correspondiente
-        rectangulo = pygame.Rect(ANCHO/2 - 125, ALTO/2 - 75, 250, 150)
-        pygame.draw.rect(self.pantalla, (10, 68, 158), rectangulo)
+            # 2. Pintar los objetos en la posición correspondiente
 
-        # 3. mostrar los cambios en la pantalla
-        pygame.display.flip()
+            y = (ALTO - ALTO_PALA) / 2
+            # Pinto el jugador 1 a la izquierda
+            x1 = MARGEN
+            jugador1 = pygame.Rect(x1, y, ANCHO_PALA, ALTO_PALA)
+            pygame.draw.rect(self.pantalla, COLOR_OBJETOS, jugador1)
 
-    pygame.quit()
+            # Pinto el jugador 2
+            x2 = ANCHO - MARGEN - ANCHO_PALA
+            jugador2 = pygame.Rect(x2, y, ANCHO_PALA, ALTO_PALA)
+            pygame.draw.rect(self.pantalla, COLOR_OBJETOS, jugador2)
+            
+
+            # 3. mostrar los cambios en la pantalla
+            pygame.display.flip()
+
+        pygame.quit()
 
 
 juego = Pong()
 juego.jugar()
 
-otro = Pong()
-otro.jugar()
+
 
 
