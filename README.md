@@ -2,6 +2,13 @@
 
 Versión del clásico juego Pong hecho con python y pygame
 
+## Cómo empezar a jugar
+
+1. Crear un entorno virtual: `python -m venv env`
+2. Activar el entorno recién creado: `.\env\scripts\activate`
+3. Instalar las dependecias: `pip install pygame -r requirements.txt`
+4. Arrancar el juego: `python pong.py`
+
 ## Como crear un entorno virtual
 
 Para crear un entorno virtual con el nombre _env_ necesito utilizar
