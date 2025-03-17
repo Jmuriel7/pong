@@ -55,16 +55,52 @@ class Pong:
             jugador2 = pygame.Rect(x2, y, ANCHO_PALA, ALTO_PALA)
             pygame.draw.rect(self.pantalla, COLOR_OBJETOS, jugador2)
             
+            # pinto la red
+            self.pintar_red()
+
+
+
             # pinto la pelota
             xp = (ANCHO - TAM_PELOTA) / 2
             yp = (ALTO - TAM_PELOTA) / 2
             pelota = pygame.Rect(xp, yp, TAM_PELOTA, TAM_PELOTA)
-            pygame.draw.rect(self.pantalla, COLOR_OBJETOS, pelota)
+            pygame.draw.rect(self.pantalla, (200, 0, 0), pelota)
 
             # 3. mostrar los cambios en la pantalla
             pygame.display.flip()
 
         pygame.quit()
+    def pintar_red(self):
+        """pinta la red en la pantalla"""
+        # es una linea discontinua
+
+            # son "muchas" lineas de tamaño "tramo_pintado"
+            # con una separación entre ellas "tramo_vacio"
+            # la pintamos de color "COLOR_OBJETOS"
+            # de un ancho "ancho_red"
+        # está centrada horizontalmente
+        # ocupa todo el alto de la pantalla
+        
+        pos_x = ANCHO / 2 - 1
+        tramo.pintado = 20
+        tramo.vacio = 15
+        ancho_red =6
+
+        # bucle:
+        # 1. dónde empiezo: pos_y = 0
+        # 2. dónde termino: pos_y = ALTO
+        # 3. cómo voy de un paso al siguiente: incrementar y en tramo_pintado + tramo_vacio
+        # 4. pintar la linea con pygame.draw.line()
+
+        for pos_y in range(0, ALTO, tramo.pintado+tramo.vacio):
+            pygame.draw.line(
+                self.pantalla,
+                COLOR_OBJETOS,
+                (pos_x, pos_y),
+                (pos_x, pos_y + tramo_pintado),
+                ancho_red
+
+            )
 
 
 juego = Pong()
